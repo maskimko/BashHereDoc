@@ -3,6 +3,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/maskimko/BashHereDoc)](https://goreportcard.com/report/github.com/maskimko/BashHereDoc)
 [![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](https://godoc.org/github.com/maskimko/BashHereDoc)
 [![Apache 2.0 License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![codecov](https://codecov.io/gh/maskimko/BashHereDoc/branch/master/graph/badge.svg)](https://app.codecov.io/gh/maskimko/BashHereDoc)
 
 This project is a very simple and tiny library for parsing bash-like (bourne-again shell) heredoc syntax.
 Heredoc (Bash Here Documents) is bash built-in functionality. You can read more about it [here](https://tldp.org/LDP/abs/html/here-docs.html)
