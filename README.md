@@ -11,9 +11,11 @@ Heredoc (Bash Here Documents) is bash built-in functionality. You can read more 
 Also this project includes a CLI executable _bhd_ to extract doc here contents.
 
 ##bhd
+
 _bhd_ is a tool like a grep to extract bash here document contents
 
 ###Usage
+
 ```
 Usage of ./bhd [file1, file2, ...]:
     -a    list all HereDocument contents
@@ -24,6 +26,7 @@ Usage of ./bhd [file1, file2, ...]:
 ```
 
 ###How to build bhd
+
 Just in the project directory type:
 `$ make build`
 
