@@ -1,9 +1,9 @@
 package main
 
 import (
-	"BashHereDoc/pkg"
 	"flag"
 	"fmt"
+	pkg "github.com/maskimko/BashHereDoc/pkg"
 	"io/ioutil"
 	"log"
 	"os"
