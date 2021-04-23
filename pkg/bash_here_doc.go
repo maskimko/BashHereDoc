@@ -27,3 +27,21 @@ func ParseHereDocs(content []byte) map[string][]byte {
 	}
 	return matches
 }
+
+//ParseHereDoc parses content and return contained data of the first heredoc statement
+func ParseHereDoc(content []byte) []byte {
+	hereDocs := ParseHereDocs(content)
+	for _, v := range hereDocs {
+		return v
+	}
+	return nil
+}
+
+//ParseHereDocString just like ParseHereDoc parses string content and return contained string of the first heredoc statement
+func ParseHereDocString(content string) string {
+	hereDoc := ParseHereDoc([]byte(content))
+	if hereDoc == nil {
+		return ""
+	}
+	return string(hereDoc)
+}

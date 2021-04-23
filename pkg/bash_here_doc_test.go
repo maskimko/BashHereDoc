@@ -70,3 +70,59 @@ htbt0zojc`)},
 		})
 	}
 }
+
+func TestParseHereDoc(t *testing.T) {
+	type args struct {
+		content []byte
+	}
+	tests := []struct {
+		name string
+		args args
+		want []byte
+	}{
+		{name: "one heredoc",
+			args: args{content: []byte(`interactive-program <<LimitString
+command #1
+command #2
+...
+LimitString`)},
+			want: []byte(`command #1
+command #2
+...`)},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ParseHereDoc(tt.args.content); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("ParseHereDoc() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestParseHereDocString(t *testing.T) {
+	type args struct {
+		content string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{name: "one heredoc",
+			args: args{content: `interactive-program <<LimitString
+command #1
+command #2
+...
+LimitString`},
+			want: `command #1
+command #2
+...`},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ParseHereDocString(tt.args.content); got != tt.want {
+				t.Errorf("ParseHereDocString() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
