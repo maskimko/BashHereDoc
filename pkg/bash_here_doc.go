@@ -7,15 +7,21 @@ import (
 //ParseHereDocs function parses a byte array for a bash heredoc structures and returns a map
 //of token to heredoc contents
 func ParseHereDocs(content []byte) map[string][]byte {
-	hdStart := regexp.MustCompile(`<<(\w+)\n`)
+	hdStart := regexp.MustCompile(`<<(-?)(\w+)\n`)
 	indexes := hdStart.FindAllSubmatchIndex(content, -1)
 	matches := make(map[string][]byte)
 	for _, m := range indexes {
-		if len(m) != 4 {
+		if len(m) != 6 {
 			continue
 		}
-		token := string(content[m[2]:m[3]])
-		hdRe := regexp.MustCompile("(?s)" + token + `\n(.*)\n` + token)
+		indentedHereDoc := m[3]-m[2] == 1 && content[m[2]:m[3]][0] == '-'
+		token := string(content[m[4]:m[5]])
+		rePattern := "(?s)" + token + `\n(.*)\n`
+		if indentedHereDoc {
+			rePattern += `\s*`
+		}
+		rePattern += token
+		hdRe := regexp.MustCompile(rePattern)
 		hdIndexes := hdRe.FindSubmatchIndex(content)
 		if len(hdIndexes) != 4 {
 			continue

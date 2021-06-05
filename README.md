@@ -33,3 +33,9 @@ Just in the project directory type:
 Or directly with go:
 `$ go build -o bhd cmd/main.go` 
 
+##Changelog
+*v0.4.2* 
+>Supports Heredoc extraction. Seems to be stable. It is used in WIX TF tool in production
+
+*v1.0.0*
+>Support of indented HereDoc (<<- with trailing hyphen). First public stable version
